@@ -2,11 +2,11 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    count: 10
+    navActive: false
   },
   mutations: {
-    increment(state) {
-      state.count++
+    activateNav(state) {
+      state.navActive = !state.navActive
     }
   },
   actions: {},

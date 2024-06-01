@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         display: ['"Staatliches"', 'sans-serif'],
         body: ['"Nunito Sans"', 'sans-serif']
+      },
+      screens: {
+        xl: '1440px'
       }
     },
     fontSize: {
@@ -19,8 +22,8 @@ export default {
       small: ['14px', '120%']
     },
     colors: {
-      primary: '#637E76',
-      secondary: '#A9B388',
+      primary: '#263c72',
+      secondary: '#1e47ab',
       dark: '#191717',
       light: '#FFEFE8'
     }

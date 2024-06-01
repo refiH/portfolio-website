@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="flex flex-col gap-20">
     <Landing />
     <About />
     <Projects />
@@ -32,6 +32,12 @@ export default {
 
 <style>
 main section {
-  @apply min-h-screen px-8;
+  @apply h-screen w-full px-8 relative;
+}
+
+main section,
+header,
+footer {
+  @apply max-w-[1440px] mx-auto;
 }
 </style>
