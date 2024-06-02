@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app'
+import { initializeAnalytics } from 'firebase/analytics'
 import { getDatabase, ref } from 'firebase/database'
 
 export const firebaseApp = initializeApp({
@@ -10,6 +11,7 @@ export const firebaseApp = initializeApp({
   appId: '1:953169919705:web:11f4d0b9efd94164b108c8',
   measurementId: 'G-BVVHH0E7KM'
 })
+initializeAnalytics(firebaseApp)
 
 const db = getDatabase(firebaseApp)
 

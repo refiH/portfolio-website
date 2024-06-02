@@ -4,7 +4,7 @@
       class="grid md:grid-rows-3 grid-cols-8 gap-4 relative z-[1] xl:absolute xl:top-1/2 xl:-translate-y-1/2"
     >
       <div
-        class="about-me bg-secondary py-4 text-center md:col-span-3 sm:col-span-5 col-span-8 grid place-items-center w-0 opacity-0"
+        class="about-me bg-secondary py-4 text-center md:col-span-3 sm:col-span-5 col-span-8 grid place-items-center"
       >
         <h2 class="md:text-h2 text-h3 whitespace-nowrap">ABOUT ME</h2>
       </div>
@@ -23,10 +23,11 @@
       <div
         @mouseover="resumeHover"
         @mouseleave="resumeLeave"
-        class="resume group border-[4px] border-secondary md:col-start-7 col-start-1 md:col-end-9 sm:col-end-5 col-end-9 md:row-start-3 row-start-4 overflow-hidden flex items-center justify-center cursor-pointer"
+        @click="download(url, 'resume_refi-hikman-gifari.pdf')"
+        class="resume group border-[4px] border-secondary md:col-start-6 col-start-1 md:col-end-9 sm:col-end-5 col-end-9 md:row-start-2 row-start-4 overflow-hidden flex items-center justify-center cursor-pointer"
       >
         <h1
-          class="md:text-h1 text-h2 whitespace-nowrap text-stroke-1 text-stroke-light text-[transparent] transition group-hover:text-light group-hover:text-stroke-0"
+          class="text-h2 whitespace-nowrap text-stroke-1 text-stroke-light text-[transparent] transition group-hover:text-light group-hover:text-stroke-0"
         >
           MY RESUME
         </h1>
@@ -54,18 +55,46 @@
 <script>
 import gsap from 'gsap'
 import SectionTextBG from '@/components/SectionTextBG.vue'
+import { ref } from 'vue'
+import { ref as storageRef } from 'firebase/storage'
+import { useFirebaseStorage, useStorageFile } from 'vuefire'
+import { saveAs } from 'file-saver'
 
 export default {
   components: {
     SectionTextBG
   },
   setup() {
-    return {}
+    return {
+      url: ref(null)
+    }
   },
   mounted() {
-    this.animate()
+    // this.animate()
+
+    const storage = useFirebaseStorage()
+    const mountainFileRef = storageRef(storage, 'resume.pdf')
+    const { url } = useStorageFile(mountainFileRef)
+
+    this.url = url
   },
   methods: {
+    download(url, label) {
+      saveAs(url, label)
+      // axios
+      //   .get(url, {
+      //     responseType: 'blob'
+      //   })
+      //   .then((response) => {
+      //     const blob = new Blob([response.data], { type: 'application/pdf' })
+      //     const link = document.createElement('a')
+      //     link.href = URL.createObjectURL(blob)
+      //     link.download = label
+      //     link.click()
+      //     URL.revokeObjectURL(link.href)
+      //   })
+      //   .catch(console.error)
+    },
     animate() {
       gsap.to('.about-me', {
         duration: 1,
@@ -83,8 +112,8 @@ export default {
         gsap.to('.resume', {
           duration: 0.5,
           ease: 'power1.inOut',
-          width: '140%',
-          x: '-29%'
+          width: '120%',
+          x: '-17%'
         })
       }
     },
