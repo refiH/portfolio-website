@@ -1,8 +1,8 @@
 <template>
   <section id="landing" class="flex items-center justify-center">
-    <div class="flex flex-col sm:flex-row gap-4 items-baseline relative">
+    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-baseline relative">
       <!-- anim -->
-      <div class="w-[17.125rem] sm:h-[6.75rem] h-[5rem] relative z-[1] overflow-hidden">
+      <div class="w-[18rem] sm:h-[6.75rem] h-[5rem] relative z-[1] overflow-hidden">
         <h1
           v-for="(val, i) in texts"
           :key="i"
@@ -18,11 +18,11 @@
       </div>
 
       <!-- endlessly text -->
-      <h5 class="italic sm:text-h5 text-h6">endlessly</h5>
+      <h5 class="italic sm:text-h5 text-h6">with endless possibilities</h5>
 
       <!-- seamless text -->
       <h1
-        class="absolute -top-12 lg:-left-56 -left-0 lg:text-[120px] sm:text-h1 text-h2 text-stroke-[0.05rem] text-stroke-[rgba(255,239,232,0.7)] text-[transparent] select-none"
+        class="absolute -top-12 -left-0 lg:text-[120px] sm:text-h1 text-h2 text-stroke-[0.05rem] text-stroke-[rgba(255,239,232,0.7)] text-[transparent] select-none"
       >
         SEAMLESS
       </h1>
@@ -36,7 +36,7 @@ import gsap from 'gsap'
 export default {
   setup() {
     return {
-      texts: ['DEVELOP', 'DESIGN', 'CRAFT', 'CODE']
+      texts: ['PRODUCT', 'DESIGN', 'CRAFT', 'CODE']
     }
   },
   mounted() {
@@ -57,7 +57,7 @@ export default {
             yoyo: true,
             repeat: 1
           },
-          (i - 1) * 4
+          (i - 1) * 2
         )
       })
 

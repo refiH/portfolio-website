@@ -10,11 +10,6 @@
   @apply w-2;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-primary;
-
-}
-
 ::-webkit-scrollbar-thumb {
   @apply bg-light rounded
 }

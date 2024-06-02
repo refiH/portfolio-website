@@ -22,8 +22,8 @@ export default {
       small: ['14px', '120%']
     },
     colors: {
-      primary: '#263c72',
-      secondary: '#1e47ab',
+      // primary: '#263c72',
+      // secondary: '#1e47ab',
       dark: '#191717',
       light: '#FFEFE8'
     }
