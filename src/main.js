@@ -10,6 +10,7 @@ import 'primeicons/primeicons.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin'
+
 import { VueFire } from 'vuefire'
 import { firebaseApp } from './firebaseInit'
 

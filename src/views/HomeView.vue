@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col gap-20">
+  <main class="flex flex-col gap-40">
     <Landing />
     <About />
     <Projects />

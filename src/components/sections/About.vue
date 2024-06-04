@@ -4,23 +4,24 @@
       class="grid md:grid-rows-3 grid-cols-8 gap-4 relative z-[1] xl:absolute xl:top-1/2 xl:-translate-y-1/2"
     >
       <div
-        class="about-me bg-secondary py-4 text-center md:col-span-3 sm:col-span-5 col-span-8 grid place-items-center"
+        class="bg-secondary md:w-[416px] w-full py-4 text-center md:col-span-3 sm:col-span-5 col-span-8 grid place-items-center relative"
       >
         <h2 class="md:text-h2 text-h3 whitespace-nowrap">ABOUT ME</h2>
+
+        <img
+          src="/src/assets/svg/dots.svg"
+          alt="dots"
+          class="-bottom-16 -right-40 pointer-events-none select-none absolute z-[-1]"
+        />
       </div>
 
       <img
         src="https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D"
         alt="About Picture"
-        class="col-start-1 md:col-end-3 sm:col-end-5 col-end-9 md:row-span-4 sm:row-span-2 sm:!h-full !h-32 w-full"
+        class="object-cover col-start-1 md:col-end-3 sm:col-end-5 col-end-9 md:row-span-4 sm:row-span-2 sm:!h-full !h-32 w-full"
       />
 
-      <!-- <img
-        src="https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D"
-        class="md:col-start-3 sm:col-start-5 col-start-1 md:col-end-5 sm:col-end-7 col-end-5 md:row-span-2"
-      /> -->
-
-      <div
+      <button
         @mouseover="resumeHover"
         @mouseleave="resumeLeave"
         @click="download(url, 'resume_refi-hikman-gifari.pdf')"
@@ -31,12 +32,12 @@
         >
           MY RESUME
         </h1>
-      </div>
+      </button>
 
       <img
         src="https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D"
         alt="About Picture"
-        class="md:col-start-3 sm:col-start-5 col-start-1 md:col-end-5 col-end-9 md:row-span-2 md:row-start-4 sm:row-start-2 sm:!h-full !h-32 w-full"
+        class="object-cover md:col-start-3 sm:col-start-5 col-start-1 md:col-end-5 col-end-9 md:row-span-2 md:row-start-4 sm:row-start-2 sm:!h-full !h-32 w-full"
       />
 
       <div

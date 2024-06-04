@@ -3,18 +3,49 @@
     :class="['header', { 'hidden-header': isHidden }]"
     class="w-full flex justify-between items-center fixed left-1/2 -translate-x-1/2 top-0 px-8 pt-6 z-40"
   >
-    <button @click="scrollTo('#landing')">
-      <p class="italic text-p text-left">
-        Refi<br />
-        Hikman
-      </p>
+    <button
+      @mouseover="nameHoverAnim(true)"
+      @mouseleave="nameHoverAnim(false)"
+      @click="scrollTo('#landing')"
+      class="italic text-p text-left font-body font-light nav-item"
+    >
+      <div class="name-1">Refi<br /></div>
+      <div class="name-2">Hikman</div>
     </button>
 
     <div class="sm:flex hidden gap-8 text-small">
-      <button @click="scrollTo('#about')">about me</button>
-      <button @click="scrollTo('#projects')">projects</button>
-      <button @click="scrollTo('#experiences')">experiences</button>
-      <button @click="scrollTo('#contacts')">contacts</button>
+      <button
+        @mouseover="navHoverAnim('.nav-item-1', true)"
+        @mouseleave="navHoverAnim('.nav-item-1', false)"
+        class="nav-item nav-item-1"
+        @click="scrollTo('#about')"
+      >
+        about me
+      </button>
+      <button
+        @mouseover="navHoverAnim('.nav-item-2', true)"
+        @mouseleave="navHoverAnim('.nav-item-2', false)"
+        class="nav-item nav-item-2"
+        @click="scrollTo('#projects')"
+      >
+        projects
+      </button>
+      <button
+        @mouseover="navHoverAnim('.nav-item-3', true)"
+        @mouseleave="navHoverAnim('.nav-item-3', false)"
+        class="nav-item nav-item-3"
+        @click="scrollTo('#experiences')"
+      >
+        experiences
+      </button>
+      <button
+        @mouseover="navHoverAnim('.nav-item-4', true)"
+        @mouseleave="navHoverAnim('.nav-item-4', false)"
+        class="nav-item nav-item-4"
+        @click="scrollTo('#contacts')"
+      >
+        contacts
+      </button>
     </div>
 
     <button @click="showMenu(!active)" class="sm:hidden text-small">menu</button>
@@ -60,6 +91,39 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
+    nameHoverAnim(enter) {
+      if (enter) {
+        gsap.to('.name-2', {
+          duration: 0.2,
+          x: 10,
+          stagger: 0.1,
+          ease: 'power4.inOut'
+        })
+      } else {
+        gsap.to('.name-2', {
+          duration: 0.2,
+          scale: 1,
+          x: 0,
+          stagger: 0.1,
+          ease: 'power4.inOut'
+        })
+      }
+    },
+    navHoverAnim(className, enter) {
+      if (enter) {
+        gsap.to(className, {
+          duration: 0.2,
+          scale: 1.1,
+          ease: 'power4.inOut'
+        })
+      } else {
+        gsap.to(className, {
+          duration: 0.2,
+          scale: 1,
+          ease: 'power4.inOut'
+        })
+      }
+    },
     handleScroll() {
       const currentScrollY = window.scrollY
       if (currentScrollY > this.lastScrollY) {
