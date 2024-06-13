@@ -32,7 +32,7 @@ export default {
 
 <style>
 main section {
-  @apply h-screen w-full px-8 relative;
+  @apply min-h-screen w-full px-8 overflow-x-hidden pt-12 relative z-[1];
 }
 
 main section,

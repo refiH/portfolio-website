@@ -92,37 +92,19 @@ export default {
   },
   methods: {
     nameHoverAnim(enter) {
-      if (enter) {
-        gsap.to('.name-2', {
-          duration: 0.2,
-          x: 10,
-          stagger: 0.1,
-          ease: 'power4.inOut'
-        })
-      } else {
-        gsap.to('.name-2', {
-          duration: 0.2,
-          scale: 1,
-          x: 0,
-          stagger: 0.1,
-          ease: 'power4.inOut'
-        })
-      }
+      gsap.to('.name-2', {
+        duration: 0.2,
+        x: enter ? 10 : 0,
+        stagger: 0.1,
+        ease: 'power4.inOut'
+      })
     },
     navHoverAnim(className, enter) {
-      if (enter) {
-        gsap.to(className, {
-          duration: 0.2,
-          scale: 1.1,
-          ease: 'power4.inOut'
-        })
-      } else {
-        gsap.to(className, {
-          duration: 0.2,
-          scale: 1,
-          ease: 'power4.inOut'
-        })
-      }
+      gsap.to(className, {
+        duration: 0.2,
+        x: enter ? 4 : 0,
+        ease: 'power4.inOut'
+      })
     },
     handleScroll() {
       const currentScrollY = window.scrollY
@@ -153,33 +135,18 @@ export default {
     showMenu(state) {
       this.active = state
 
-      if (this.active) {
-        gsap.to('.mobile-nav-item', {
-          duration: 1,
-          x: 0,
-          stagger: 0.1,
-          ease: 'power4.inOut'
-        })
-        gsap.to('.backdrop', {
-          duration: 1,
-          opacity: 1,
-          ease: 'power4.inOut',
-          zIndex: 30
-        })
-      } else {
-        gsap.to('.mobile-nav-item', {
-          duration: 1,
-          x: '102%',
-          stagger: 0.1,
-          ease: 'power4.inOut'
-        })
-        gsap.to('.backdrop', {
-          duration: 1,
-          opacity: 0,
-          ease: 'power4.inOut',
-          zIndex: -1
-        })
-      }
+      gsap.to('.mobile-nav-item', {
+        duration: 1,
+        x: this.active ? 0 : '102%',
+        stagger: 0.1,
+        ease: 'power4.inOut'
+      })
+      gsap.to('.backdrop', {
+        duration: 1,
+        opacity: this.active ? 1 : 0,
+        ease: 'power4.inOut',
+        zIndex: this.active ? 30 : -1
+      })
     }
   }
 }

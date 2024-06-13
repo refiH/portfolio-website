@@ -1,12 +1,7 @@
 <template>
-  <section
-    id="projects"
-    class="overflow-hidden xl:h-[690px] px-0 flex flex-col justify-between gap-8"
-  >
+  <section id="projects" class="xl:min-h-[690px] px-0 flex flex-col justify-between gap-8">
     <div class="relative md:w-fit md:ml-auto mx-8">
-      <div
-        class="bg-secondary md:w-[416px] w-full py-4 text-center grid place-items-center relative z-[1]"
-      >
+      <div class="bg-secondary md:w-[416px] w-full py-4 text-center flex-center relative z-[1]">
         <h2 class="md:text-h2 text-h3 whitespace-nowrap">PROJECTS</h2>
       </div>
 
@@ -15,13 +10,54 @@
         alt="dots"
         class="-bottom-16 -left-64 lg:-left-40 max-w-max pointer-events-none select-none absolute"
       />
+
+      <SectionTextBG side="right"> THINGS I'VE WORKED ON </SectionTextBG>
     </div>
 
-    <div class="swiper relative z-[1] w-full">
+    <div
+      v-for="project in mainProjects"
+      class="min-h-[90vh] xl:min-h-0 bg-secondary relative z-[1] mx-8 my-12 md:pt-16 pt-10 md:pb-12 pb-8 flex flex-col gap-8"
+    >
+      <div
+        class="bg-light text-secondary md:w-1/2 sm:w-[80%] w-full text-center py-4 absolute md:left-0 left-1/2 -top-14 md:translate-x-0 -translate-x-1/2"
+      >
+        <h2 class="md:text-h3 sm:text-h4 text-h5 whitespace-nowrap">{{ project.name }}</h2>
+      </div>
+      <div class="flex-1 flex flex-col sm:flex-row gap-8 md:mx-12 mx-8">
+        <div class="flex-1 flex flex-col gap-4">
+          <img
+            src="https://images.unsplash.com/photo-1714811063788-ba9c2b34f12a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D"
+            :alt="project.name"
+            class="object-cover sm:h-full h-40"
+          />
+          <div class="h-[6rem] flex gap-4 text-h6">
+            <router-link
+              href="#"
+              target="_blank"
+              class="flex-center flex-1 border border-light border-opacity-50 transition hover:bg-blue-700 group"
+            >
+              <i class="pi pi-globe group-hover:scale-125 transition"></i>
+            </router-link>
+            <router-link
+              href="#"
+              target="_blank"
+              class="flex-center flex-1 border border-light border-opacity-50 transition hover:bg-dark group"
+            >
+              <i class="pi pi-github group-hover:scale-125 transition"></i>
+            </router-link>
+          </div>
+        </div>
+        <div class="flex-1 bg-primary text-p px-6 py-8">
+          {{ project.desc }}
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper z-[1] w-full relative">
       <div class="swiper-wrapper mb-12">
         <div
           v-for="(val, i) in projects"
-          class="swiper-slide !max-w-[336px] md:!max-w-none pt-4"
+          class="swiper-slide md:!max-w-none pt-4 pr-14 md:pr-0"
           :class="{ 'ml-8': i == 0, 'mr-8': i == projects.length - 1 }"
         >
           <div
@@ -42,7 +78,7 @@
             <img
               :src="val.img"
               alt="Project Picture"
-              class="object-cover h-[9.75rem] aspect-video pointer-events-none select-none"
+              class="object-cover h-[8rem] aspect-video pointer-events-none select-none"
             />
 
             <h6 class="text-h6 font-bold px-3 py-1 absolute -top-4 left-0 bg-primary select-none">
@@ -52,13 +88,22 @@
         </div>
       </div>
 
-      <div class="swiper-navigation absolute top-0 z-[2] w-full h-full flex">
+      <!-- <div class="swiper-navigation absolute top-0 lg:z-[2] w-full h-full flex">
         <div class="swiper-prev flex-1 cursor-pointer"></div>
         <div class="swiper-next flex-1 cursor-pointer"></div>
+      </div> -->
+
+      <div
+        class="swiper-prev bg-dark bg-opacity-60 select-none py-2 pl-8 pr-4 flex-1 cursor-pointer z-[2] absolute top-1/2 -translate-y-1/2 left-0"
+      >
+        prev
+      </div>
+      <div
+        class="swiper-next bg-dark bg-opacity-60 select-none py-2 pr-8 pl-4 flex-1 cursor-pointer z-[2] absolute top-1/2 -translate-y-1/2 right-0"
+      >
+        next
       </div>
     </div>
-
-    <SectionTextBG> THINGS I'VE WORKED ON </SectionTextBG>
   </section>
 </template>
 
@@ -78,6 +123,24 @@ export default {
     return {
       projectItemClasses: [],
       open: false,
+      mainProjects: [
+        {
+          name: 'ANTRIAN WEB APP',
+          job: 'Front-End Developer',
+          img: 'https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D',
+          desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sint officia.
+                Earum id aperiam maiores corrupti labore veniam consequatur necessitatibus atque
+                blanditiis velit rerum, excepturi explicabo odit libero culpa provident?`
+        },
+        {
+          name: 'SMKN 4 WEBSITE',
+          job: 'Front-End Developer',
+          img: 'https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D',
+          desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, sint officia.
+                Earum id aperiam maiores corrupti labore veniam consequatur necessitatibus atque
+                blanditiis velit rerum, excepturi explicabo odit libero culpa provident?`
+        }
+      ],
       projects: [
         {
           name: 'SCHOOL PROFILE',
@@ -130,10 +193,11 @@ export default {
   methods: {
     initSwiper() {
       new Swiper('.swiper', {
-        slidesPerView: 'auto',
+        slidesPerView: 1,
         spaceBetween: 16,
-        freeMode: true,
         modules: [Navigation],
+        noSwiping: true,
+        noSwipingClass: 'swiper-slide',
         navigation: {
           prevEl: '.swiper-prev',
           nextEl: '.swiper-next'
@@ -143,8 +207,7 @@ export default {
             slidesPerView: 2
           },
           1024: {
-            slidesPerView: 3,
-            freeMode: false
+            slidesPerView: 3
           }
         }
       })

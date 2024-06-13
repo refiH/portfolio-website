@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-follower flex items-center justify-center">
+  <div id="cursor-follower" class="flex-center">
     <i class="pi pi-angle-left absolute opacity-0 text-secondary" style="font-size: 1rem"></i>
     <i class="pi pi-angle-right absolute opacity-0 text-secondary" style="font-size: 1rem"></i>
     <i class="pi pi-download absolute opacity-0 text-secondary" style="font-size: 0.5rem"></i>
@@ -15,23 +15,26 @@ export default {
   mounted() {
     const isTouchDevice = 'ontouchstart' in window
     const createCursorFollower = () => {
-      const el = document.querySelector('.cursor-follower')
+      const el = document.querySelector('#cursor-follower')
       const prev = document.querySelector('.pi-angle-left')
       const next = document.querySelector('.pi-angle-right')
       const download = document.querySelector('.pi-download')
       const direct = document.querySelector('.pi-arrow-up-right')
+      const nav = document.querySelector('.nav-item')
+      let rect = nav.getBoundingClientRect()
 
       window.addEventListener('mousemove', (e) => {
         const { target, x, y } = e
         const isTargetLinkOrBtn =
           target?.closest('button') ||
+          target?.closest('a') ||
           target?.closest('.swiper-prev') ||
           target?.closest('.swiper-next')
 
         const isTargetSwiperPrev = target?.closest('.swiper-prev')
         const isTargetSwiperNext = target?.closest('.swiper-next')
         const isTargetDownload = target?.closest('.resume')
-        const isTargetNav = target?.closest('.nav-item')
+        const isTargetNav = target?.closest('.nav-item') || target?.closest('a')
 
         gsap.to(el, {
           x: x + 20,
@@ -42,25 +45,17 @@ export default {
           transform: `scale(${isTargetLinkOrBtn ? 4 : 1})`
         })
 
-        gsap.to(prev, {
-          duration: 0.2,
-          opacity: isTargetSwiperPrev ? 1 : 0
+        gsap.to(nav, {
+          x: rect.x * 0.015 + x * 0.015,
+          y: rect.y * 0.015 + y * 0.015,
+          duration: 0.7,
+          ease: 'power4'
         })
 
-        gsap.to(next, {
-          duration: 0.2,
-          opacity: isTargetSwiperNext ? 1 : 0
-        })
-
-        gsap.to(download, {
-          duration: 0.2,
-          opacity: isTargetDownload ? 1 : 0
-        })
-
-        gsap.to(direct, {
-          duration: 0.2,
-          opacity: isTargetNav ? 1 : 0
-        })
+        this.isHovered(prev, isTargetSwiperPrev)
+        this.isHovered(next, isTargetSwiperNext)
+        this.isHovered(download, isTargetDownload)
+        this.isHovered(direct, isTargetNav)
       })
 
       document.addEventListener('mouseleave', (e) => {
@@ -71,15 +66,29 @@ export default {
       })
     }
 
-    if (!isTouchDevice) {
+    if (!isTouchDevice && window.innerWidth >= 1024) {
       createCursorFollower()
+    }
+  },
+  methods: {
+    isHovered(target, state) {
+      if (state)
+        gsap.to(target, {
+          duration: 0.2,
+          opacity: 1
+        })
+      else
+        gsap.to(target, {
+          duration: 0.2,
+          opacity: 0
+        })
     }
   }
 }
 </script>
 
 <style scoped>
-.cursor-follower {
+#cursor-follower {
   position: fixed;
   top: 0;
   left: 0;
@@ -92,7 +101,7 @@ export default {
   pointer-events: none;
 }
 
-.cursor-follower {
+#cursor-follower {
   @apply bg-light bg-opacity-70;
 }
 </style>

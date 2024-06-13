@@ -1,101 +1,55 @@
 <template>
-  <section id="about" class="overflow-hidden xl:h-[690px] h-full">
-    <div
-      class="grid md:grid-rows-3 grid-cols-8 gap-4 relative z-[1] xl:absolute xl:top-1/2 xl:-translate-y-1/2"
-    >
-      <div
-        class="bg-secondary md:w-[416px] w-full py-4 text-center md:col-span-3 sm:col-span-5 col-span-8 grid place-items-center relative"
-      >
-        <h2 class="md:text-h2 text-h3 whitespace-nowrap">ABOUT ME</h2>
-
-        <img
-          src="/src/assets/svg/dots.svg"
-          alt="dots"
-          class="-bottom-16 -right-40 pointer-events-none select-none absolute z-[-1]"
-        />
-      </div>
+  <section id="about" class="xl:min-h-[690px] h-full flex flex-col gap-8">
+    <div class="bg-secondary md:w-[416px] w-full py-4 flex-center relative">
+      <h2 class="md:text-h2 text-h3 whitespace-nowrap">ABOUT ME</h2>
 
       <img
-        src="https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D"
-        alt="About Picture"
-        class="object-cover col-start-1 md:col-end-3 sm:col-end-5 col-end-9 md:row-span-4 sm:row-span-2 sm:!h-full !h-32 w-full"
+        src="/src/assets/svg/dots.svg"
+        alt="dots"
+        class="-bottom-16 -right-40 pointer-events-none select-none absolute z-[-1]"
       />
 
-      <button
-        @mouseover="resumeHover"
-        @mouseleave="resumeLeave"
-        @click="download(url, 'resume_refi-hikman-gifari.pdf')"
-        class="resume group border-[4px] border-secondary md:col-start-6 col-start-1 md:col-end-9 sm:col-end-5 col-end-9 md:row-start-2 row-start-4 overflow-hidden flex items-center justify-center cursor-pointer"
-      >
-        <h1
-          class="text-h2 whitespace-nowrap text-stroke-1 text-stroke-light text-[transparent] transition group-hover:text-light group-hover:text-stroke-0"
-        >
-          MY RESUME
-        </h1>
-      </button>
-
-      <img
-        src="https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D"
-        alt="About Picture"
-        class="object-cover md:col-start-3 sm:col-start-5 col-start-1 md:col-end-5 col-end-9 md:row-span-2 md:row-start-4 sm:row-start-2 sm:!h-full !h-32 w-full"
-      />
-
-      <div
-        class="bg-secondary sm:col-start-5 col-start-1 col-end-9 row-span-2 md:row-start-4 px-6 py-8"
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor neque, sint dignissimos unde,
-        tempora tempore quibusdam aliquid eum quam, hic optio. Est dolorem veritatis asperiores iste
-        assumenda quia necessitatibus itaque.
-      </div>
+      <SectionTextBG side="left"> GET TO KNOW ME </SectionTextBG>
     </div>
 
-    <SectionTextBG> GET TO KNOW ME </SectionTextBG>
+    <div class="flex-1 flex flex-col lg:flex-row gap-6 lg:mb-12">
+      <div class="flex-1 flex flex-col">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1675629118284-c9eb039df8cd?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="about picture"
+          class="flex-1 max-h-48 aspect-video mb-6"
+        />
+        <ResumeButton />
+      </div>
+      <div class="flex-1 bg-secondary p-4 rounded">
+        <div class="p-6 border-4 border-primary h-full rounded">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor neque, sint dignissimos
+          unde, tempora tempore quibusdam aliquid eum quam, hic optio. Est dolorem veritatis
+          asperiores iste assumenda quia necessitatibus itaque.
+        </div>
+      </div>
+      <div class="flex-1 bg-secondary"></div>
+    </div>
   </section>
 </template>
 
 <script>
 import gsap from 'gsap'
 import SectionTextBG from '@/components/SectionTextBG.vue'
-import { ref } from 'vue'
-import { ref as storageRef } from 'firebase/storage'
-import { useFirebaseStorage, useStorageFile } from 'vuefire'
-import { saveAs } from 'file-saver'
+import ResumeButton from '@/components/ResumeButton.vue'
 
 export default {
   components: {
-    SectionTextBG
+    SectionTextBG,
+    ResumeButton
   },
   setup() {
-    return {
-      url: ref(null)
-    }
+    return {}
   },
   mounted() {
     // this.animate()
-
-    const storage = useFirebaseStorage()
-    const mountainFileRef = storageRef(storage, 'resume.pdf')
-    const { url } = useStorageFile(mountainFileRef)
-
-    this.url = url
   },
   methods: {
-    download(url, label) {
-      saveAs(url, label)
-      // axios
-      //   .get(url, {
-      //     responseType: 'blob'
-      //   })
-      //   .then((response) => {
-      //     const blob = new Blob([response.data], { type: 'application/pdf' })
-      //     const link = document.createElement('a')
-      //     link.href = URL.createObjectURL(blob)
-      //     link.download = label
-      //     link.click()
-      //     URL.revokeObjectURL(link.href)
-      //   })
-      //   .catch(console.error)
-    },
     animate() {
       gsap.to('.about-me', {
         duration: 1,
@@ -107,26 +61,6 @@ export default {
           start: '20% bottom'
         }
       })
-    },
-    resumeHover() {
-      if (window.innerWidth >= 768) {
-        gsap.to('.resume', {
-          duration: 0.5,
-          ease: 'power1.inOut',
-          width: '120%',
-          x: '-17%'
-        })
-      }
-    },
-    resumeLeave() {
-      if (window.innerWidth >= 768) {
-        gsap.to('.resume', {
-          duration: 0.8,
-          ease: 'power1.inOut',
-          width: '100%',
-          x: 0
-        })
-      }
     }
   }
 }
@@ -134,10 +68,6 @@ export default {
 
 <style scoped>
 img {
-  @apply object-cover h-full;
-}
-
-.resume:hover {
-  background-color: var(--secondary);
+  @apply object-cover;
 }
 </style>
