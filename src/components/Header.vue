@@ -1,7 +1,7 @@
 <template>
   <header
     :class="['header', { 'hidden-header': isHidden }]"
-    class="w-full flex justify-between items-center fixed left-1/2 -translate-x-1/2 top-0 px-8 pt-6 z-40"
+    class="w-full flex justify-between items-center fixed left-1/2 -translate-x-1/2 top-0 sm:px-8 px-6 pt-6 z-40"
   >
     <button
       @mouseover="nameHoverAnim(true)"
@@ -14,6 +14,15 @@
     </button>
 
     <div class="sm:flex hidden gap-8 text-small">
+      <button
+        @mouseover="navHoverAnim('.nav-item-0', true)"
+        @mouseleave="navHoverAnim('.nav-item-0', false)"
+        class="nav-item-0"
+        aria-label="Randomize Color"
+        @click="setRandomColor(this.colorState)"
+      >
+        <i class="pi pi-palette"></i>
+      </button>
       <button
         @mouseover="navHoverAnim('.nav-item-1', true)"
         @mouseleave="navHoverAnim('.nav-item-1', false)"
@@ -52,16 +61,23 @@
   </header>
 
   <!-- mobile nav -->
-  <button @click="scrollTo('#about')" class="mobile-nav-item top-[4.5rem] w-[calc(60vw)]">
+  <button
+    @click="setRandomColor(this.colorState)"
+    aria-label="Randomize Color"
+    class="mobile-nav-item top-[4.5rem] w-[30vw]"
+  >
+    <i class="pi pi-palette"></i>
+  </button>
+  <button @click="scrollTo('#about')" class="mobile-nav-item top-[7.5rem] w-[60vw]">
     about me
   </button>
-  <button @click="scrollTo('#projects')" class="mobile-nav-item top-[7.5rem] w-[calc(50vw)]">
+  <button @click="scrollTo('#projects')" class="mobile-nav-item top-[10.5rem] w-[50vw]">
     projects
   </button>
-  <button @click="scrollTo('#experiences')" class="mobile-nav-item top-[10.5rem] w-[calc(40vw)]">
+  <button @click="scrollTo('#experiences')" class="mobile-nav-item top-[13.5rem] w-[40vw]">
     experiences
   </button>
-  <button @click="scrollTo('#contacts')" class="mobile-nav-item top-[13.5rem] w-[calc(70vw)]">
+  <button @click="scrollTo('#contacts')" class="mobile-nav-item top-[16.5rem] w-[70vw]">
     contacts
   </button>
 
@@ -84,6 +100,11 @@ export default {
       scrollTimeout: null
     }
   },
+  computed: {
+    colorState() {
+      return this.$store.state.colors
+    }
+  },
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
   },
@@ -91,6 +112,11 @@ export default {
     window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
+    setRandomColor(items) {
+      this.$store.dispatch('setRandomColor', {
+        items: items
+      })
+    },
     nameHoverAnim(enter) {
       gsap.to('.name-2', {
         duration: 0.2,
@@ -102,7 +128,7 @@ export default {
     navHoverAnim(className, enter) {
       gsap.to(className, {
         duration: 0.2,
-        x: enter ? 4 : 0,
+        scale: enter ? 1.2 : 1,
         ease: 'power4.inOut'
       })
     },
@@ -128,7 +154,7 @@ export default {
       const target = document.querySelector(id)
       if (target) {
         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset
-        const adjustedPosition = targetPosition - 25
+        const adjustedPosition = targetPosition - 0
         gsap.to(window, { scrollTo: adjustedPosition, duration: 1, ease: 'power3.inOut' })
       }
     },

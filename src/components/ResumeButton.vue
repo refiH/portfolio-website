@@ -1,13 +1,21 @@
 <template>
   <button
     @click="download(url, 'resume_refi-hikman-gifari.pdf')"
-    class="resume group px-8 py-1 border-[4px] border-secondary overflow-hidden flex-center cursor-pointer"
+    class="resume group py-1 border-[4px] border-secondary flex-center cursor-pointer relative"
   >
-    <h2
-      class="text-h2 whitespace-nowrap text-stroke-1 text-stroke-light text-[transparent] transition group-hover:text-light group-hover:text-stroke-0"
+    <div class="overflow-hidden flex-center">
+      <h2
+        class="xs:text-h2 text-h3 whitespace-nowrap text-stroke-1 text-stroke-light text-[transparent] transition group-hover:text-light group-hover:text-stroke-0"
+      >
+        MY RESUME
+      </h2>
+    </div>
+
+    <h6
+      class="text-h6 font-bold whitespace-nowrap bg-white text-secondary absolute -top-4 -left-2 px-4 -rotate-3"
     >
-      MY RESUME
-    </h2>
+      Download
+    </h6>
   </button>
 </template>
 

@@ -35,6 +35,7 @@ export default {
         const isTargetSwiperNext = target?.closest('.swiper-next')
         const isTargetDownload = target?.closest('.resume')
         const isTargetNav = target?.closest('.nav-item') || target?.closest('a')
+        const isTargetLight = target?.closest('.bg-light')
 
         gsap.to(el, {
           x: x + 20,
@@ -42,7 +43,8 @@ export default {
           duration: 0.7,
           ease: 'power4',
           opacity: isTargetLinkOrBtn ? 0.6 : 1,
-          transform: `scale(${isTargetLinkOrBtn ? 4 : 1})`
+          transform: `scale(${isTargetLinkOrBtn ? 4 : 1})`,
+          backgroundColor: isTargetLight ? '#191717B3' : '#FFEFE8B3'
         })
 
         gsap.to(nav, {
@@ -94,7 +96,7 @@ export default {
   left: 0;
   width: 20px;
   height: 20px;
-  border-radius: 100%;
+  /* border-radius: 100%; */
   opacity: 0;
   z-index: 10000;
   user-select: none;

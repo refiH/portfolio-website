@@ -1,6 +1,6 @@
 <template>
-  <section id="experiences" class="xl:min-h-[690px] overflow-hidden">
-    <div class="relative md:w-fit md:ml-auto mb-8">
+  <section id="experiences" class="xl:min-h-[690px] overflow-hidden bg-dark pb-24 md:pt-28">
+    <div class="relative md:w-fit md:ml-auto mb-16">
       <div class="bg-secondary md:w-[416px] w-full py-4 text-center flex-center relative z-[1]">
         <h2 class="md:text-h2 text-h3 whitespace-nowrap">EXPERIENCES</h2>
       </div>
@@ -14,15 +14,23 @@
       <SectionTextBG side="right"> WHERE I'VE WORKED AT </SectionTextBG>
     </div>
 
-    <div class="w-full flex flex-col gap-16 items-center">
+    <div class="w-full flex flex-col gap-16 items-center relative">
       <ExperienceCard
-        class="sm:w-[35rem] w-full"
-        v-for="val in experiences"
-        :name="val.company"
-        :title="val.name"
+        v-for="(val, i) in experiences"
+        class="sm:w-[32rem] w-full"
+        :company="val.company"
+        :title="val.title"
         :date="val.date"
         :src="val.img"
+        :desc="val.desc"
+        :img-class="{ 'p-4': i == 0 || i == 3 }"
       />
+      <div
+        class="border border-primary border-opacity-35 h-full absolute left-0 top-0 lg:block hidden"
+      >
+        <div class="bg-primary text-light p-2 absolute -top-4 left-1/2 -translate-x-1/2"></div>
+        <div class="bg-primary text-light p-2 absolute -bottom-4 left-1/2 -translate-x-1/2"></div>
+      </div>
     </div>
   </section>
 </template>
@@ -40,28 +48,32 @@ export default {
     return {
       experiences: [
         {
-          company: 'Neuronworks',
-          name: 'Teaching Factory',
+          company: 'PT. Neuronworks',
+          title: 'Teaching Factory',
           date: 'Jul 2023 - Sep 2023',
-          img: 'https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D'
+          img: 'images/logo-neuronworks.png',
+          desc: `In this teaching factory program, my team of 4 designed and developed a landing page for the company. I contributed as a UI/UX Designer and Frontend Developer using Next.js for the framework on the frontend side.`
         },
         {
           company: 'Curaweda',
-          name: 'Teaching Factory',
+          title: 'Teaching Factory',
           date: 'Nov 2023 - Des 2023',
-          img: 'https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D'
+          img: 'images/logo-curaweda.png',
+          desc: `In this teaching factory program, my team and I developed a hotel management system web app which I contributed as a Frontend Developer using Vue.js and Quasar as frameworks for the frontend.`
         },
         {
-          company: 'Solusi Inovasi Pesat',
-          name: 'Internship',
+          company: 'PT. Solusi Inovasi Pesat',
+          title: 'Internship',
           date: 'Nov 2023 - Jan 2024',
-          img: 'https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D'
+          img: 'images/logo-sip.jpeg',
+          desc: `My team and I developed a project management system web app for the company. I contributed as a UI/UX Designer and Frontend Developer utilizing technologies such as Vue.js and Quasar with Micro Frontend as a development pattern.`
         },
         {
           company: '4 Vision Media',
-          name: 'Internship',
-          date: 'Jan 2023 - Present',
-          img: 'https://images.unsplash.com/photo-1713813879455-aaab0cd2b904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fHw%3D'
+          title: 'Internship',
+          date: 'Jan 2024 - Present',
+          img: 'images/logo-4vm.png',
+          desc: `Me and my team was given a task to designed and developed a queue management web app. I contributed as a Frontend Developer at first then later as a Fullstack Developer using Laravel and Vue.js.`
         }
       ]
     }

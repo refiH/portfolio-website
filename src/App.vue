@@ -43,33 +43,29 @@ export default {
       loading: ref(true)
     }
   },
+  computed: {
+    colorState() {
+      return this.$store.state.colors
+    }
+  },
   created() {
     let colors = useDatabaseList(colorsRef)
 
     setTimeout(() => {
-      this.getRandomColor(colors.value)
+      this.$store.dispatch('setColor', { data: colors.value }).then(() => {
+        this.setRandomColor(this.colorState)
+      })
     }, 2000)
   },
   mounted() {
     document.body.classList.add('overflow-hidden')
   },
   methods: {
-    getRandomColor(items) {
-      var item = items[Math.floor(Math.random() * items.length)]
-
-      if (item) {
-        this.injectStyle(item.primary, item.secondary)
-      } else {
-        this.injectStyle('#263c72', '#1e47ab')
-      }
-
+    setRandomColor(items) {
+      this.$store.dispatch('setRandomColor', {
+        items: items
+      })
       this.animate()
-    },
-    injectStyle(primary, secondary) {
-      const style = document.createElement('style')
-      style.type = 'text/css'
-      style.innerHTML = `:root { --primary: ${primary}; --secondary: ${secondary} }`
-      document.head.appendChild(style)
     },
     animate() {
       gsap.to('.loading-bar', {

@@ -1,5 +1,5 @@
 <template>
-  <section id="landing" class="flex-center">
+  <section id="landing" class="flex-center pt-0">
     <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-baseline relative">
       <!-- anim -->
       <div class="w-[18rem] sm:h-[6.75rem] h-[5rem] relative z-[1] overflow-hidden">

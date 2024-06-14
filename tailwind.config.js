@@ -10,7 +10,7 @@ export default {
       screens: {
         xxs: '360px',
         xs: '480px',
-        xl: '1440px'
+        xl: '1600px'
       },
       fontSize: {
         h1: ['90px', '120%'],
