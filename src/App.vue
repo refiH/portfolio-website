@@ -74,6 +74,7 @@ export default {
         stagger: 0.1,
         ease: 'power4.inOut',
         onComplete: this.animate2
+        // onComplete: this.complete
       })
     },
     animate2() {

@@ -1,6 +1,6 @@
 <template>
   <main class="flex flex-col">
-    <Landing />
+    <Hero />
     <About />
     <Projects />
     <Experiences />
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Landing from '@/components/sections/Landing.vue'
+import Hero from '@/components/sections/Hero.vue'
 import About from '@/components/sections/About.vue'
 import Projects from '@/components/sections/Projects.vue'
 import Experiences from '@/components/sections/Experiences.vue'
@@ -17,7 +17,7 @@ import Contacts from '@/components/sections/Contacts.vue'
 
 export default {
   components: {
-    Landing,
+    Hero,
     About,
     Projects,
     Experiences,

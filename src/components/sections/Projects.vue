@@ -31,22 +31,22 @@
             class="object-cover sm:h-full h-40"
           />
           <div class="h-[6rem] flex gap-4 text-h6">
-            <router-link
-              to="#"
+            <a
+              href="#"
               target="_blank"
               aria-label="Website Link"
               class="flex-center flex-1 border border-light border-opacity-50 transition hover:bg-blue-700 group"
             >
               <i class="pi pi-globe group-hover:scale-125 transition"></i>
-            </router-link>
-            <router-link
-              to="#"
+            </a>
+            <a
+              href="#"
               target="_blank"
               aria-label="Github Repo"
               class="flex-center flex-1 border border-light border-opacity-50 transition hover:bg-dark group"
             >
               <i class="pi pi-github group-hover:scale-125 transition"></i>
-            </router-link>
+            </a>
           </div>
         </div>
         <div class="flex-1 bg-primary text-p px-6 py-8">

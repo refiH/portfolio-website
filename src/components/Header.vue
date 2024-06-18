@@ -6,7 +6,7 @@
     <button
       @mouseover="nameHoverAnim(true)"
       @mouseleave="nameHoverAnim(false)"
-      @click="scrollTo('#landing')"
+      @click="scrollTo('#hero')"
       class="italic text-p text-left font-body font-light nav-item"
     >
       <div class="name-1">Refi<br /></div>
@@ -17,7 +17,7 @@
       <button
         @mouseover="navHoverAnim('.nav-item-0', true)"
         @mouseleave="navHoverAnim('.nav-item-0', false)"
-        class="nav-item-0"
+        class="nav-item-0 color-randomizer"
         aria-label="Randomize Color"
         @click="setRandomColor(this.colorState)"
       >
@@ -64,7 +64,7 @@
   <button
     @click="setRandomColor(this.colorState)"
     aria-label="Randomize Color"
-    class="mobile-nav-item top-[4.5rem] w-[30vw]"
+    class="mobile-nav-item color-randomizer top-[4.5rem] w-[30vw]"
   >
     <i class="pi pi-palette"></i>
   </button>
@@ -119,7 +119,7 @@ export default {
     },
     nameHoverAnim(enter) {
       gsap.to('.name-2', {
-        duration: 0.2,
+        duration: 0.25,
         x: enter ? 10 : 0,
         stagger: 0.1,
         ease: 'power4.inOut'
@@ -127,7 +127,7 @@ export default {
     },
     navHoverAnim(className, enter) {
       gsap.to(className, {
-        duration: 0.2,
+        duration: 0.25,
         scale: enter ? 1.2 : 1,
         ease: 'power4.inOut'
       })

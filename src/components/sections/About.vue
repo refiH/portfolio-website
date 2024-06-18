@@ -1,5 +1,8 @@
 <template>
-  <section id="about" class="xl:min-h-[690px] h-full flex flex-col gap-8">
+  <section
+    id="about"
+    class="xl:min-h-[690px] h-full flex flex-col gap-8 overflow-hidden bg-primary"
+  >
     <div class="bg-secondary md:w-[416px] w-full py-4 flex-center relative">
       <h2 class="md:text-h2 text-h3 whitespace-nowrap">ABOUT ME</h2>
 
@@ -30,6 +33,8 @@
       </div>
       <div class="flex-1 bg-secondary"></div>
     </div>
+
+    <div class="absolute bg-dark bg-opacity-50 w-full h-full top-0 left-0 z-[-2]"></div>
   </section>
 </template>
 

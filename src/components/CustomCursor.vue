@@ -1,9 +1,17 @@
 <template>
-  <div id="cursor-follower" class="flex-center">
+  <div id="cursor-follower" class="hidden lg:flex flex-col items-center justify-center">
     <i class="pi pi-angle-left absolute opacity-0 text-secondary" style="font-size: 1rem"></i>
     <i class="pi pi-angle-right absolute opacity-0 text-secondary" style="font-size: 1rem"></i>
     <i class="pi pi-download absolute opacity-0 text-secondary" style="font-size: 0.5rem"></i>
     <i class="pi pi-arrow-up-right absolute opacity-0 text-secondary" style="font-size: 0.5rem"></i>
+
+    <div class="flex w-full h-full cursor-colors opacity-0">
+      <div
+        v-for="color in colorState"
+        class="flex-1"
+        :style="`background-color: ` + color.primary"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -12,13 +20,25 @@ import gsap from 'gsap'
 
 export default {
   name: 'CustomCursor',
+  computed: {
+    colorState() {
+      return this.$store.state.colors
+    }
+  },
   mounted() {
-    const isTouchDevice = 'ontouchstart' in window
-    const createCursorFollower = () => {
+    this.createCursorFollower()
+    // const isTouchDevice = 'ontouchstart' in window
+    // if (!isTouchDevice && window.innerWidth >= 1024) {
+    // }
+  },
+  methods: {
+    createCursorFollower() {
+      const isTouchDevice = 'ontouchstart' in window
       const el = document.querySelector('#cursor-follower')
       const prev = document.querySelector('.pi-angle-left')
       const next = document.querySelector('.pi-angle-right')
       const download = document.querySelector('.pi-download')
+      const colors = document.querySelector('.cursor-colors')
       const direct = document.querySelector('.pi-arrow-up-right')
       const nav = document.querySelector('.nav-item')
       let rect = nav.getBoundingClientRect()
@@ -34,6 +54,7 @@ export default {
         const isTargetSwiperPrev = target?.closest('.swiper-prev')
         const isTargetSwiperNext = target?.closest('.swiper-next')
         const isTargetDownload = target?.closest('.resume')
+        const isTargetColorRandomizer = target?.closest('.color-randomizer')
         const isTargetNav = target?.closest('.nav-item') || target?.closest('a')
         const isTargetLight = target?.closest('.bg-light')
 
@@ -42,21 +63,23 @@ export default {
           y: y + 20,
           duration: 0.7,
           ease: 'power4',
-          opacity: isTargetLinkOrBtn ? 0.6 : 1,
+          opacity: isTargetLinkOrBtn ? 0.4 : 1,
           transform: `scale(${isTargetLinkOrBtn ? 4 : 1})`,
           backgroundColor: isTargetLight ? '#191717B3' : '#FFEFE8B3'
         })
 
-        gsap.to(nav, {
-          x: rect.x * 0.015 + x * 0.015,
-          y: rect.y * 0.015 + y * 0.015,
-          duration: 0.7,
-          ease: 'power4'
-        })
+        if (!isTouchDevice)
+          gsap.to(nav, {
+            x: rect.x * 0.015 + x * 0.015,
+            y: rect.y * 0.015 + y * 0.015,
+            duration: 0.7,
+            ease: 'power4'
+          })
 
         this.isHovered(prev, isTargetSwiperPrev)
         this.isHovered(next, isTargetSwiperNext)
         this.isHovered(download, isTargetDownload)
+        this.isHovered(colors, isTargetColorRandomizer)
         this.isHovered(direct, isTargetNav)
       })
 
@@ -66,13 +89,7 @@ export default {
           opacity: 0
         })
       })
-    }
-
-    if (!isTouchDevice && window.innerWidth >= 1024) {
-      createCursorFollower()
-    }
-  },
-  methods: {
+    },
     isHovered(target, state) {
       if (state)
         gsap.to(target, {

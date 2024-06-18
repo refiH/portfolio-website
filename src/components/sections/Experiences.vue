@@ -52,28 +52,28 @@ export default {
           title: 'Teaching Factory',
           date: 'Jul 2023 - Sep 2023',
           img: 'images/logo-neuronworks.png',
-          desc: `In this teaching factory program, my team of 4 designed and developed a landing page for the company. I contributed as a UI/UX Designer and Frontend Developer using Next.js for the framework on the frontend side.`
+          desc: `In this teaching factory program, my team of 4 designed and developed a landing page for the company. I contributed as a UI/UX Designer and Frontend Developer.`
         },
         {
           company: 'Curaweda',
           title: 'Teaching Factory',
           date: 'Nov 2023 - Des 2023',
           img: 'images/logo-curaweda.png',
-          desc: `In this teaching factory program, my team and I developed a hotel management system web app which I contributed as a Frontend Developer using Vue.js and Quasar as frameworks for the frontend.`
+          desc: `In this teaching factory program, my team and I developed a hotel management system web app which I contributed as a Frontend Developer.`
         },
         {
           company: 'PT. Solusi Inovasi Pesat',
           title: 'Internship',
           date: 'Nov 2023 - Jan 2024',
           img: 'images/logo-sip.jpeg',
-          desc: `My team and I developed a project management system web app for the company. I contributed as a UI/UX Designer and Frontend Developer utilizing technologies such as Vue.js and Quasar with Micro Frontend as a development pattern.`
+          desc: `My team and I developed a project management system web app for the company. I contributed as a UI/UX Designer and Frontend Developer.`
         },
         {
           company: '4 Vision Media',
           title: 'Internship',
           date: 'Jan 2024 - Present',
           img: 'images/logo-4vm.png',
-          desc: `Me and my team was given a task to designed and developed a queue management web app. I contributed as a Frontend Developer at first then later as a Fullstack Developer using Laravel and Vue.js.`
+          desc: `Me and my team was given a task to designed and developed a queue management web app. I contributed as a Frontend Developer at first then later as a Fullstack Developer.`
         }
       ]
     }
