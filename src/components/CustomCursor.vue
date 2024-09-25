@@ -1,9 +1,9 @@
 <template>
   <div id="cursor-follower" class="hidden lg:flex flex-col items-center justify-center">
-    <i class="pi pi-angle-left absolute opacity-0 text-secondary" style="font-size: 1rem"></i>
-    <i class="pi pi-angle-right absolute opacity-0 text-secondary" style="font-size: 1rem"></i>
-    <i class="pi pi-download absolute opacity-0 text-secondary" style="font-size: 0.5rem"></i>
-    <i class="pi pi-arrow-up-right absolute opacity-0 text-secondary" style="font-size: 0.5rem"></i>
+    <i class="pi pi-chevron-left absolute opacity-0 text-secondary" style="font-size: 0.3rem"></i>
+    <i class="pi pi-chevron-right absolute opacity-0 text-secondary" style="font-size: 0.3rem"></i>
+    <i class="pi pi-download absolute opacity-0 text-secondary" style="font-size: 0.3rem"></i>
+    <i class="pi pi-arrow-up-right absolute opacity-0 text-secondary" style="font-size: 0.3rem"></i>
 
     <div class="flex w-full h-full cursor-colors opacity-0">
       <div
@@ -35,8 +35,8 @@ export default {
     createCursorFollower() {
       const isTouchDevice = 'ontouchstart' in window
       const el = document.querySelector('#cursor-follower')
-      const prev = document.querySelector('.pi-angle-left')
-      const next = document.querySelector('.pi-angle-right')
+      const prev = document.querySelector('.pi-chevron-left')
+      const next = document.querySelector('.pi-chevron-right')
       const download = document.querySelector('.pi-download')
       const colors = document.querySelector('.cursor-colors')
       const direct = document.querySelector('.pi-arrow-up-right')
@@ -59,12 +59,12 @@ export default {
         const isTargetLight = target?.closest('.bg-light')
 
         gsap.to(el, {
-          x: x + 20,
-          y: y + 20,
-          duration: 0.7,
+          x: x + (isTargetLinkOrBtn ? 40 : 20),
+          y: y + (isTargetLinkOrBtn ? 40 : 20),
+          duration: 0.5,
           ease: 'power4',
           opacity: isTargetLinkOrBtn ? 0.4 : 1,
-          transform: `scale(${isTargetLinkOrBtn ? 4 : 1})`,
+          transform: `scale(${isTargetLinkOrBtn ? 6 : 1})`,
           backgroundColor: isTargetLight ? '#191717B3' : '#FFEFE8B3'
         })
 
@@ -72,7 +72,7 @@ export default {
           gsap.to(nav, {
             x: rect.x * 0.015 + x * 0.015,
             y: rect.y * 0.015 + y * 0.015,
-            duration: 0.7,
+            duration: 0.5,
             ease: 'power4'
           })
 
@@ -85,7 +85,7 @@ export default {
 
       document.addEventListener('mouseleave', (e) => {
         gsap.to(el, {
-          duration: 0.7,
+          duration: 0.5,
           opacity: 0
         })
       })
@@ -111,8 +111,8 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   /* border-radius: 100%; */
   opacity: 0;
   z-index: 10000;

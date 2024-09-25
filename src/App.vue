@@ -15,8 +15,6 @@
     <div class="loading-bar-2 flex-1 h-full bg-secondary"></div>
   </div>
 
-  <CustomCursor />
-
   <Header />
   <RouterView />
   <Footer />
@@ -26,7 +24,6 @@
 import { RouterView } from 'vue-router'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import CustomCursor from '@/components/CustomCursor.vue'
 import { ref } from 'vue'
 import gsap from 'gsap'
 import { useDatabaseList } from 'vuefire'
@@ -35,8 +32,7 @@ import { colorsRef } from './firebaseInit'
 export default {
   components: {
     Header,
-    Footer,
-    CustomCursor
+    Footer
   },
   setup() {
     return {

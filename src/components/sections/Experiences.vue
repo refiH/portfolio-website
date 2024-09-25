@@ -1,48 +1,38 @@
 <template>
   <section id="experiences" class="xl:min-h-[690px] overflow-hidden bg-dark pb-24 md:pt-28">
-    <div class="relative md:w-fit md:ml-auto mb-16">
-      <div class="bg-secondary md:w-[416px] w-full py-4 text-center flex-center relative z-[1]">
-        <h2 class="md:text-h2 text-h3 whitespace-nowrap">EXPERIENCES</h2>
-      </div>
+    <div class="sm:py-8">
+      <SectionTitle side="right" title="EXPERIENCES" subtitle="WHERE I'VE WORKED AT" />
 
-      <img
-        src="/src/assets/svg/dots.svg"
-        alt="dots"
-        class="-bottom-16 -left-64 lg:-left-40 max-w-max pointer-events-none select-none absolute"
-      />
-
-      <SectionTextBG side="right"> WHERE I'VE WORKED AT </SectionTextBG>
-    </div>
-
-    <div class="w-full flex flex-col gap-16 items-center relative">
-      <ExperienceCard
-        v-for="(val, i) in experiences"
-        class="sm:w-[32rem] w-full"
-        :company="val.company"
-        :title="val.title"
-        :date="val.date"
-        :src="val.img"
-        :desc="val.desc"
-        :img-class="{ 'p-4': i == 0 || i == 3 }"
-      />
-      <div
-        class="border border-primary border-opacity-35 h-full absolute left-0 top-0 lg:block hidden"
-      >
-        <div class="bg-primary text-light p-2 absolute -top-4 left-1/2 -translate-x-1/2"></div>
-        <div class="bg-primary text-light p-2 absolute -bottom-4 left-1/2 -translate-x-1/2"></div>
+      <div class="w-full flex flex-col gap-20 items-center relative">
+        <ExperienceCard
+          v-for="(val, i) in experiences"
+          class="sm:w-[32rem] w-full"
+          :company="val.company"
+          :title="val.title"
+          :date="val.date"
+          :src="val.img"
+          :desc="val.desc"
+          :img-class="{ 'p-4': i == 0 || i == 3 }"
+        />
+        <div
+          class="border border-primary border-opacity-35 h-full absolute left-0 top-0 lg:block hidden"
+        >
+          <div class="bg-primary text-light p-2 absolute -top-4 left-1/2 -translate-x-1/2"></div>
+          <div class="bg-primary text-light p-2 absolute -bottom-4 left-1/2 -translate-x-1/2"></div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import SectionTextBG from '../SectionTextBG.vue'
 import ExperienceCard from '../ExperienceCard.vue'
+import SectionTitle from '../SectionTitle.vue'
 
 export default {
   components: {
-    SectionTextBG,
-    ExperienceCard
+    ExperienceCard,
+    SectionTitle
   },
   setup() {
     return {

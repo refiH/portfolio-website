@@ -1,8 +1,8 @@
 <template>
-  <footer class="py-2 sm:px-8 px-6">
-    <p class="text-p text-center">
+  <footer class="py-4 sm:px-8 px-6">
+    <div class="text-p text-center">
       Designed and Built by Refi Hikman | {{ new Date().getFullYear() }}
-    </p>
+    </div>
   </footer>
 </template>
 

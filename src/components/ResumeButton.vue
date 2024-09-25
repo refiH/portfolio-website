@@ -12,7 +12,7 @@
     </div>
 
     <h6
-      class="text-h6 font-bold whitespace-nowrap bg-white text-secondary absolute -top-4 -left-2 px-4 -rotate-3 group-hover:-rotate-12 transition duration-200"
+      class="text-h6 font-bold whitespace-nowrap bg-light text-secondary absolute -top-4 -left-2 px-4 -rotate-3 group-hover:-rotate-12 transition duration-200"
     >
       Download
     </h6>

@@ -1,12 +1,12 @@
 <template>
-  <section id="hero" class="flex-center pt-0">
+  <section id="hero" class="h-screen flex-center pt-0">
     <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-baseline relative">
       <!-- anim -->
       <div class="w-[18rem] sm:h-[6.75rem] h-[5rem] relative z-[1] overflow-hidden">
         <h1
           v-for="(val, i) in texts"
           :key="i"
-          class="absolute left-0 sm:-bottom-6 -bottom-2 translate-y-[10px] opacity-0 sm:text-h1 text-h2"
+          class="absolute left-0 sm:-bottom-6 -bottom-2 opacity-0 sm:text-h1 text-h2"
           :class="`anim-${i}`"
         >
           {{ val }}
@@ -52,12 +52,11 @@ export default {
           {
             duration: 2,
             opacity: 1,
-            y: 0,
             ease: 'steps(1)',
             yoyo: true,
             repeat: 1
           },
-          (i - 1) * 2
+          i * 2
         )
       })
 

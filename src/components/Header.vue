@@ -1,85 +1,87 @@
 <template>
   <header
     :class="['header', { 'hidden-header': isHidden }]"
-    class="w-full flex justify-between items-center fixed left-1/2 -translate-x-1/2 top-0 sm:px-8 px-6 pt-6 z-40"
+    class="w-full fixed left-1/2 -translate-x-1/2 top-0 z-40"
   >
-    <button
-      @mouseover="nameHoverAnim(true)"
-      @mouseleave="nameHoverAnim(false)"
-      @click="scrollTo('#hero')"
-      class="italic text-p text-left font-body font-light nav-item"
-    >
-      <div class="name-1">Refi<br /></div>
-      <div class="name-2">Hikman</div>
-    </button>
+    <div class="flex justify-between items-center sm:px-8 px-6 pt-6">
+      <button
+        @mouseover="nameHoverAnim(true)"
+        @mouseleave="nameHoverAnim(false)"
+        @click="scrollTo('#hero')"
+        class="italic text-p text-left font-body font-light nav-item"
+      >
+        <div class="name-1">Refi<br /></div>
+        <div class="name-2">Hikman</div>
+      </button>
 
-    <div class="sm:flex hidden gap-8 text-small">
-      <button
-        @mouseover="navHoverAnim('.nav-item-0', true)"
-        @mouseleave="navHoverAnim('.nav-item-0', false)"
-        class="nav-item-0 color-randomizer"
-        aria-label="Randomize Color"
-        @click="setRandomColor(this.colorState)"
-      >
-        <i class="pi pi-palette"></i>
-      </button>
-      <button
-        @mouseover="navHoverAnim('.nav-item-1', true)"
-        @mouseleave="navHoverAnim('.nav-item-1', false)"
-        class="nav-item nav-item-1"
-        @click="scrollTo('#about')"
-      >
-        about me
-      </button>
-      <button
-        @mouseover="navHoverAnim('.nav-item-2', true)"
-        @mouseleave="navHoverAnim('.nav-item-2', false)"
-        class="nav-item nav-item-2"
-        @click="scrollTo('#projects')"
-      >
-        projects
-      </button>
-      <button
-        @mouseover="navHoverAnim('.nav-item-3', true)"
-        @mouseleave="navHoverAnim('.nav-item-3', false)"
-        class="nav-item nav-item-3"
-        @click="scrollTo('#experiences')"
-      >
-        experiences
-      </button>
-      <button
-        @mouseover="navHoverAnim('.nav-item-4', true)"
-        @mouseleave="navHoverAnim('.nav-item-4', false)"
-        class="nav-item nav-item-4"
-        @click="scrollTo('#contacts')"
-      >
-        contacts
-      </button>
+      <div class="sm:flex hidden gap-8 text-small">
+        <button
+          @mouseover="navHoverAnim('.nav-item-0', true)"
+          @mouseleave="navHoverAnim('.nav-item-0', false)"
+          class="nav-item-0 color-randomizer"
+          aria-label="Randomize Color"
+          @click="setRandomColor(this.colorState)"
+        >
+          <i class="pi pi-palette"></i>
+        </button>
+        <button
+          @mouseover="navHoverAnim('.nav-item-1', true)"
+          @mouseleave="navHoverAnim('.nav-item-1', false)"
+          class="nav-item nav-item-1"
+          @click="scrollTo('#about')"
+        >
+          about me
+        </button>
+        <button
+          @mouseover="navHoverAnim('.nav-item-2', true)"
+          @mouseleave="navHoverAnim('.nav-item-2', false)"
+          class="nav-item nav-item-2"
+          @click="scrollTo('#projects')"
+        >
+          projects
+        </button>
+        <button
+          @mouseover="navHoverAnim('.nav-item-3', true)"
+          @mouseleave="navHoverAnim('.nav-item-3', false)"
+          class="nav-item nav-item-3"
+          @click="scrollTo('#experiences')"
+        >
+          experiences
+        </button>
+        <button
+          @mouseover="navHoverAnim('.nav-item-4', true)"
+          @mouseleave="navHoverAnim('.nav-item-4', false)"
+          class="nav-item nav-item-4"
+          @click="scrollTo('#contacts')"
+        >
+          contacts
+        </button>
+      </div>
+
+      <button @click="showMenu(!active)" class="sm:hidden text-small">menu</button>
     </div>
 
-    <button @click="showMenu(!active)" class="sm:hidden text-small">menu</button>
+    <!-- mobile nav -->
+    <button
+      @click="setRandomColor(this.colorState)"
+      aria-label="Randomize Color"
+      class="mobile-nav-item color-randomizer top-[4.5rem] w-[30vw]"
+    >
+      <i class="pi pi-palette"></i>
+    </button>
+    <button @click="scrollTo('#about')" class="mobile-nav-item top-[7.5rem] w-[60vw]">
+      about me
+    </button>
+    <button @click="scrollTo('#projects')" class="mobile-nav-item top-[10.5rem] w-[50vw]">
+      projects
+    </button>
+    <button @click="scrollTo('#experiences')" class="mobile-nav-item top-[13.5rem] w-[40vw]">
+      experiences
+    </button>
+    <button @click="scrollTo('#contacts')" class="mobile-nav-item top-[16.5rem] w-[70vw]">
+      contacts
+    </button>
   </header>
-
-  <!-- mobile nav -->
-  <button
-    @click="setRandomColor(this.colorState)"
-    aria-label="Randomize Color"
-    class="mobile-nav-item color-randomizer top-[4.5rem] w-[30vw]"
-  >
-    <i class="pi pi-palette"></i>
-  </button>
-  <button @click="scrollTo('#about')" class="mobile-nav-item top-[7.5rem] w-[60vw]">
-    about me
-  </button>
-  <button @click="scrollTo('#projects')" class="mobile-nav-item top-[10.5rem] w-[50vw]">
-    projects
-  </button>
-  <button @click="scrollTo('#experiences')" class="mobile-nav-item top-[13.5rem] w-[40vw]">
-    experiences
-  </button>
-  <button @click="scrollTo('#contacts')" class="mobile-nav-item top-[16.5rem] w-[70vw]">
-    contacts
-  </button>
 
   <div
     @click="showMenu(false)"

@@ -1,5 +1,7 @@
 <template>
   <main class="flex flex-col">
+    <CustomCursor />
+
     <Hero />
     <About />
     <Projects />
@@ -9,6 +11,7 @@
 </template>
 
 <script>
+import CustomCursor from '@/components/CustomCursor.vue'
 import Hero from '@/components/sections/Hero.vue'
 import About from '@/components/sections/About.vue'
 import Projects from '@/components/sections/Projects.vue'
@@ -17,6 +20,7 @@ import Contacts from '@/components/sections/Contacts.vue'
 
 export default {
   components: {
+    CustomCursor,
     Hero,
     About,
     Projects,
@@ -32,12 +36,12 @@ export default {
 
 <style>
 main section {
-  @apply min-h-screen w-full sm:px-8 px-6 overflow-x-hidden pt-24 relative z-[1];
+  @apply w-full sm:px-8 px-6 overflow-x-hidden pt-24 relative z-[1];
 }
 
-main section,
-header,
-footer {
+main section > div,
+header > div,
+footer > div {
   @apply max-w-[1600px] mx-auto;
 }
 </style>
