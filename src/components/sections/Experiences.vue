@@ -3,7 +3,7 @@
     <div class="sm:py-8">
       <SectionTitle side="right" title="EXPERIENCES" subtitle="WHERE I'VE WORKED AT" />
 
-      <div class="w-full flex flex-col gap-20 items-center relative">
+      <div class="w-full flex flex-col gap-20 lg:gap-28 items-center relative">
         <ExperienceCard
           v-for="(val, i) in experiences"
           class="sm:w-[32rem] w-full"
@@ -12,7 +12,7 @@
           :date="val.date"
           :src="val.img"
           :desc="val.desc"
-          :img-class="{ 'p-4': i == 0 || i == 3 }"
+          :img-class="{ 'p-4': i === 1 || i === 4 }"
         />
         <div
           class="border border-primary border-opacity-35 h-full absolute left-0 top-0 lg:block hidden"
@@ -38,32 +38,39 @@ export default {
     return {
       experiences: [
         {
-          company: 'PT. Neuronworks',
-          title: 'Teaching Factory',
-          date: 'Jul 2023 - Sep 2023',
-          img: 'images/logo-neuronworks.png',
-          desc: `In this teaching factory program, my team of 4 designed and developed a landing page for the company. I contributed as a UI/UX Designer and Frontend Developer.`
+          company: 'MrScraper',
+          title: 'Full Time',
+          date: 'Aug 2024 - Present',
+          img: 'images/logo-mrscraper.png',
+          desc: ''
         },
         {
-          company: 'Curaweda',
-          title: 'Teaching Factory',
-          date: 'Nov 2023 - Des 2023',
-          img: 'images/logo-curaweda.png',
-          desc: `In this teaching factory program, my team and I developed a hotel management system web app which I contributed as a Frontend Developer.`
+          company: '4 Vision Media',
+          title: 'Internship',
+          date: 'Jan 2024 - July 2024',
+          img: 'images/logo-4vm.png',
+          desc: 'Me and my team was given a task to designed and developed a queue management web app. I contributed as a Frontend Developer at first then later as a Fullstack Developer.'
         },
         {
           company: 'PT. Solusi Inovasi Pesat',
           title: 'Internship',
           date: 'Nov 2023 - Jan 2024',
           img: 'images/logo-sip.jpeg',
-          desc: `My team and I developed a project management system web app for the company. I contributed as a UI/UX Designer and Frontend Developer.`
+          desc: 'My team and I developed a project management system web app for the company. I contributed as a UI/UX Designer and Frontend Developer.'
         },
         {
-          company: '4 Vision Media',
-          title: 'Internship',
-          date: 'Jan 2024 - Present',
-          img: 'images/logo-4vm.png',
-          desc: `Me and my team was given a task to designed and developed a queue management web app. I contributed as a Frontend Developer at first then later as a Fullstack Developer.`
+          company: 'Curaweda',
+          title: 'Teaching Factory',
+          date: 'Nov 2023 - Des 2023',
+          img: 'images/logo-curaweda.png',
+          desc: 'In this teaching factory program, my team and I developed a hotel management system web app which I contributed as a Frontend Developer.'
+        },
+        {
+          company: 'PT. Neuronworks',
+          title: 'Teaching Factory',
+          date: 'Jul 2023 - Sep 2023',
+          img: 'images/logo-neuronworks.png',
+          desc: 'In this teaching factory program, my team of 4 designed and developed a landing page for the company. I contributed as a UI/UX Designer and Frontend Developer.'
         }
       ]
     }

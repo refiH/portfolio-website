@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar-track {
+  background-color: var(--primary);
+}
+
+::-moz-selection {
+  color: var(--secondary);
+  background: #fff;
+}
+
+::selection {
+  color: var(--secondary);
+  background: #fff;
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
 /**
   * MAIN SCROLLBAR
   *

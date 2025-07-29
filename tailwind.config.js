@@ -30,5 +30,16 @@ export default {
       }
     }
   },
-  plugins: [require('@designbycode/tailwindcss-text-stroke')]
+  plugins: [
+    require('@designbycode/tailwindcss-text-stroke'),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.section-max': {
+          maxWidth: '1600px',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }
+      })
+    }
+  ]
 }

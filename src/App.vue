@@ -75,9 +75,9 @@ export default {
     },
     animate2() {
       gsap.to('.loading-bar-2', {
-        duration: 1,
+        duration: 0.5,
         height: 0,
-        stagger: 0.1,
+        stagger: 0.2,
         ease: 'power4.inOut',
         onComplete: this.complete
       })
@@ -93,5 +93,9 @@ export default {
 <style>
 #app {
   @apply text-light font-body;
+}
+
+* {
+  @apply transition-colors duration-300;
 }
 </style>

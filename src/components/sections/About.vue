@@ -1,25 +1,25 @@
 <template>
   <section id="about" class="xl:min-h-[690px] bg-dark/50">
-    <div class="flex flex-col gap-8 sm:py-8">
+    <div class="flex flex-col gap-12 sm:py-8">
       <SectionTitle side="left" title="ABOUT ME" subtitle="GET TO KNOW ME" />
 
-      <div class="flex-1 flex flex-col lg:flex-row gap-6 lg:mb-12">
-        <div class="flex-1 flex flex-col">
+      <div class="flex flex-col gap-6 lg:mb-12 max-w-screen-lg mx-auto">
+        <div class="max-w-screen-sm mx-auto w-full">
           <img
             src="https://plus.unsplash.com/premium_photo-1675629118284-c9eb039df8cd?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="about picture"
-            class="flex-1 max-h-48 aspect-video mb-6 object-cover"
+            class="max-h-48 aspect-video mb-6 object-cover w-full"
           />
-          <ResumeButton />
+          <ResumeButton class="w-full" />
         </div>
-        <div class="flex-1 bg-secondary p-4 rounded">
+        <div class="bg-secondary p-4 rounded mt-8">
           <div class="p-6 border-4 border-primary h-full rounded">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor neque, sint dignissimos
             unde, tempora tempore quibusdam aliquid eum quam, hic optio. Est dolorem veritatis
             asperiores iste assumenda quia necessitatibus itaque.
           </div>
         </div>
-        <div class="flex-1 bg-secondary"></div>
+        <div class="border-4 border-secondary p-4"></div>
       </div>
     </div>
   </section>
@@ -36,7 +36,30 @@ export default {
     SectionTitle
   },
   setup() {
-    return {}
+    return {
+      skills: [
+        {
+          name: '',
+          image: ''
+        },
+        {
+          name: '',
+          image: ''
+        },
+        {
+          name: '',
+          image: ''
+        },
+        {
+          name: '',
+          image: ''
+        },
+        {
+          name: '',
+          image: ''
+        }
+      ]
+    }
   },
   mounted() {
     // this.animate()

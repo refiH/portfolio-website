@@ -42,6 +42,6 @@ main section {
 main section > div,
 header > div,
 footer > div {
-  @apply max-w-[1600px] mx-auto;
+  @apply section-max;
 }
 </style>
